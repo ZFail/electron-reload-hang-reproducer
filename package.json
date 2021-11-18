@@ -17,6 +17,11 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^13.1.4"
+    "electron": "16.0.0"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.1",
+    "bindings": "*",
+    "node-addon-api": "*"
   }
 }
