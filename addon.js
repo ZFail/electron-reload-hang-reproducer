@@ -1,9 +1,10 @@
 const { createTSFN } = require('bindings')('addon');
 
-const callback = (...args) => { 
-    console.log(new Date, ...args); 
+const callback = (id) => { 
+    console.log(id); 
+    if (id >= 8) {
+        process.exit(0)
+    }
 };
 
-void async function() {
-    console.log(createTSFN(callback));
-}();
+createTSFN(callback);
