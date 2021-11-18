@@ -16,14 +16,18 @@ function createWindow () {
       enableRemoteModule: true
     }
   })
-
+  let reloadCount = 0
+  mainWindow.webContents.on('did-start-loading', ()=> {
+    console.log('did-start-loading, reloadCount: ', reloadCount)
+    reloadCount++
+  })
+  mainWindow.webContents.openDevTools()
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 
   require("@electron/remote/main").enable(mainWindow.webContents)
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished

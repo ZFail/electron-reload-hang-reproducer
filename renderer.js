@@ -8,8 +8,7 @@ const callback = (id) => {
         // remote.app.exit(0)
     }
 };
-// createTSFN(callback);
 
-setTimeout(() => {
-    createTSFN(callback);
-}, 0)
+createTSFN(callback);
+
+// setTimeout(() => { createTSFN(callback); }, 0)

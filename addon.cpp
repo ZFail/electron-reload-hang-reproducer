@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <thread>
 #include <iostream>
+#include <atomic>
 
 struct Context {
 	std::thread nativeThread;
@@ -91,7 +92,7 @@ static napi_value createTSFN(napi_env env, napi_callback_info info) {
 
 	auto context = new Context;
 
-	napi_create_threadsafe_function(
+	status = napi_create_threadsafe_function(
 		env,
 		args[0],
 		NULL,
@@ -103,6 +104,7 @@ static napi_value createTSFN(napi_env env, napi_callback_info info) {
 		context,
 		callJs,
 		&context->tsfn);
+	assert(status == napi_ok);
 
 	context->nativeThread = std::thread(threadEntry, context);
 
